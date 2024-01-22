@@ -1,5 +1,5 @@
 import express from 'express';
-import fs from 'fs/promises';
+import {engine} from 'express-handlebars';
 
 const app = express();
 
