@@ -1,12 +1,23 @@
 import express from 'express';
 import {engine} from 'express-handlebars';
-import fs from 'fs/promises';
+import {loadMovie, loadMovies} from './src/movies.js';
 
 const app = express();
+
 app.engine('handlebars', engine());
 app.set('view engine', 'handlebars');
 app.set('views', './templates');
 
-app.use('/static', express.static('./statitc'));
+app.get('/', async (req, res) => {
+	const movies = await loadMovies();
+	res.render('start', {movies});
+});
 
-app.listen(3080);
+app.get('/movies/:movieId', async (req, res) => {
+	const movie = await loadMovie(req.params.movieId);
+	res.render('content', {movie});
+});
+
+app.use('/static', express.static('./static'));
+
+app.listen(5080);
