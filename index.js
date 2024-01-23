@@ -10,12 +10,12 @@ app.set('views', './templates');
 
 app.get('/', async (req, res) => {
 	const movies = await loadMovies();
-	res.render('start', {movies});
+	res.render('start', {movies, title: 'Välkommen'});
 });
 
 app.get('/movies/:movieId', async (req, res) => {
 	const movie = await loadMovie(req.params.movieId);
-	res.render('content', {movie});
+	res.render('content', {movie, title: 'Välkommen'});
 });
 
 app.use('/static', express.static('./static'));
