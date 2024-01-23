@@ -1,11 +1,9 @@
-<a href='/'>Tillbaka till startsidan!</a>
+<a href='/'>Gå tillbaka till förstasidan!</a>
 
-<article class='movie'>
+<div class='movieInfo'>
 	<h1>{{movie.attributes.title}}</h1>
-	<div class='intro'>
-		{{{movie.attributes.intro}}}
-	</div>
+	<p class='intro'>{{movie.attributes.intro}}</p>
 	{{#if movie.attributes.image}}
 		<img src='{{movie.attributes.image.url}}' />
 	{{/if}}
-</article>
+</div>
