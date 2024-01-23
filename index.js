@@ -10,12 +10,20 @@ app.set('views', './templates');
 
 app.get('/', async (req, res) => {
 	const movies = await loadMovies();
-	res.render('start', {movies, title: 'Välkommen'});
+	res.render('start', {
+		movies,
+		title: 'Välkommen',
+		headerTitle: 'Våra filmer!',
+	});
 });
 
 app.get('/movies/:movieId', async (req, res) => {
 	const movie = await loadMovie(req.params.movieId);
-	res.render('content', {movie, title: 'Välkommen'});
+	res.render('content', {
+		movie,
+		title: 'Välkommen',
+		headerTitle: 'Filmen du valde',
+	});
 });
 
 app.use('/static', express.static('./static'));

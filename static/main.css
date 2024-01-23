@@ -28,3 +28,7 @@ body {
 .movieInfo img {
 	max-width: 404px;
 }
+
+.intro {
+	max-width: 400px;
+}
